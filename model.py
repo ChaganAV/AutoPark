@@ -1,14 +1,19 @@
 class Bus:
     def __init__(self,id,model,number):
-        self.ID = id
+        self.Id = id
         self.Model = model
         self.GNumber = number
 
 class Driver:
     def __init__(self,id,name):
-        self.ID = id
+        self.Id = id
         self.Name = name
-
+class Route:
+    def __init__(self,id,number,bus_id,driver_id):
+        self.Id = id
+        self.Number = number
+        self.Bus_id = bus_id
+        self.Driver_id = driver_id
 class File:
     def __init__(self,file,mod):
         self.file = file
