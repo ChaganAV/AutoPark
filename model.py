@@ -27,6 +27,8 @@ class File:
         return self.data.read()
     def ReadLine(self):
         return self.data.readline()
+    def Write(self,str1):
+        self.data.write(str1)
 
 
     

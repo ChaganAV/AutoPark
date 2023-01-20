@@ -14,7 +14,7 @@ def InputClient():
         elif res == 4:
             c.AddDriver()
         elif res == 5:
-            break
+            c.PrintRoute()
         elif res == 6:   
             c.AddRoute()
         elif res == 7:

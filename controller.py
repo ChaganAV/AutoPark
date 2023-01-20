@@ -19,8 +19,11 @@ def AddBus():
     busIn = input("Введите модель: ")
     busGN = input("Введите госномер: ")
     bus = m.Bus(busId,busIn,busGN)
-    d.fbus.write(f"{bus.Id},{bus.Model},{bus.GNumber}\n")
-    d.fbus.close()
+    file = d.fileBus
+    fbus = m.File(file,'a')
+    fbus.Open()
+    fbus.Write(f"{bus.Id},{bus.Model},{bus.GNumber}\n")
+    fbus.Close()
 
 def AddDriver():
     id = input("Введите id: ")
@@ -34,7 +37,7 @@ def AddRoute():
     number = input("Введите номер маршрута: ")
     bus_id = input("Введите id автобуса: ")
     driver_id = input("Введите id водителя: ")
-    d.fRoute.write(f"{id},{bus_id},{driver_id}\n")
+    d.fRoute.write(f"{id},{number},{bus_id},{driver_id}\n")
     d.fRoute.close()
 
 def PrintBus():
@@ -55,6 +58,35 @@ def PrintDriver():
             strLine = strLine + l + " "
         print(strLine.strip())
 
+def PrintRoute():
+    file = d.fileRoute
+    lines = FileToList(file)
+    for line in lines:
+        if len(line[0].strip())>0:
+            driver = FindDriver(line[3].strip())
+            bus = FindBus(line[2].strip())
+            print(f"{line[0]} маршрут {line[1]}, {bus}, водитель: {driver}")
+        
+
+def FindDriver(id):
+    file = d.fileDriver
+    lines = FileToList(file)
+    driver = ""
+    for line in lines:
+        if line[0].strip() == id:
+            driver = line[1].strip()
+            break
+    return driver
+
+def FindBus(id):
+    file = d.fileBus
+    lines = FileToList(file)
+    bus = ()
+    for line in lines:
+        if line[0].strip()==id:
+            bus = (f"{line[1]} гос.номер: {line[2].strip()}")
+            break
+    return bus
 # вывод в список
 def FileToList(file):
     mod = 'r'
