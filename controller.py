@@ -1,6 +1,19 @@
 import data as d
 import model as m
 
+# вывод списка команд
+def SelectCommands():
+    commands = "Список команд:\n\
+            1 - Вывод автобусов\n\
+            2 - Добавление автобуса\n\
+            3 - Вывод водителей\n\
+            4 - Добавление водителя\n\
+            5 - Вывод маршрута\n\
+            6 - Добавление маршрута\n\
+            7 - Выход\n\
+            8 - Список команд\n"
+    print(commands)
+
 def InsertBus():
     busId = input("Введите id: ")
     busIn = input("Введите модель: ")
