@@ -1,10 +1,7 @@
 import controller as c
-import data as d
-
-fin = d.fin
 
 def InputClient():
-    print("==Телефонный справочник==") 
+    print("==Автобусный парк==") 
     c.SelectCommands()
     while True:
         res = int(input("Введите номер действия: \n> "))
