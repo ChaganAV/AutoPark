@@ -19,26 +19,33 @@ def AddBus():
     busIn = input("Введите модель: ")
     busGN = input("Введите госномер: ")
     bus = m.Bus(busId,busIn,busGN)
-    file = d.fileBus
-    fbus = m.File(file,'a')
-    fbus.Open()
-    fbus.Write(f"{bus.Id},{bus.Model},{bus.GNumber}\n")
-    fbus.Close()
+    file = m.File(d.fileBus,'a')
+    file.Open()
+    file.Write(f"{bus.Id},{bus.Model},{bus.GNumber}\n")
+    file.Close()
+    return bus
 
 def AddDriver():
     id = input("Введите id: ")
     name = input("Введите водителя: ")
     driver = m.Driver(id,name)
-    d.fDriver.write(f"{driver.Id},{driver.Name}\n")
-    d.fDriver.close()
+    file = m.File(d.fileDriver,'a')
+    file.Open()
+    file.Write(f"{driver.Id},{driver.Name}\n")
+    file.Close()
+    return driver
 
 def AddRoute():
     id = input("Введите id: ")
     number = input("Введите номер маршрута: ")
     bus_id = input("Введите id автобуса: ")
     driver_id = input("Введите id водителя: ")
-    d.fRoute.write(f"{id},{number},{bus_id},{driver_id}\n")
-    d.fRoute.close()
+    route = m.Route(id,number,bus_id,driver_id)
+    file = m.File(d.fileRoute,'a')
+    file.Open()
+    file.Write(f"{route.Id},{route.Number},{route.Bus_id},{route.Driver_id}\n")
+    file.Close()
+    return route
 
 def PrintBus():
     file = d.fileBus

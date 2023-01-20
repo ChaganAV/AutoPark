@@ -3,17 +3,23 @@ class Bus:
         self.Id = id
         self.Model = model
         self.GNumber = number
+    def Print(self):
+        print(f"{self.Id}, {self.Model}, {self.GNumber}")
 
 class Driver:
     def __init__(self,id,name):
         self.Id = id
         self.Name = name
+    def Print(self):
+        print(f"{self.Id}, {self.Name}")
 class Route:
     def __init__(self,id,number,bus_id,driver_id):
         self.Id = id
         self.Number = number
         self.Bus_id = bus_id
         self.Driver_id = driver_id
+    def Print(self):
+        print(f"{self.Id}, {self.Number}, {self.Bus_id}, {self.Driver_id}")
 class File:
     def __init__(self,file,mod):
         self.file = file

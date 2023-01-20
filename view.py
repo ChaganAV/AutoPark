@@ -8,15 +8,18 @@ def InputClient():
         if res == 1: 
             c.PrintBus()
         elif res == 2:
-            c.AddBus()
+            bus = c.AddBus()
+            bus.Print()
         elif res == 3:
             c.PrintDriver()
         elif res == 4:
-            c.AddDriver()
+            driver = c.AddDriver()
+            driver.Print()
         elif res == 5:
             c.PrintRoute()
         elif res == 6:   
-            c.AddRoute()
+            route = c.AddRoute()
+            route.Print()
         elif res == 7:
             break
         else:
