@@ -1,4 +1,3 @@
-import controller as c
-import data as d
-# с.InsertBus()
-c.PrintBus(d.fileBus,'r')
+import view as v
+
+v.InputClient()

@@ -14,25 +14,51 @@ def SelectCommands():
             8 - Список команд\n"
     print(commands)
 
-def InsertBus():
+def AddBus():
     busId = input("Введите id: ")
     busIn = input("Введите модель: ")
     busGN = input("Введите госномер: ")
     bus = m.Bus(busId,busIn,busGN)
-    d.fbus.write(f"{bus.ID},{bus.Model},{bus.GNumber}")
+    d.fbus.write(f"{bus.Id},{bus.Model},{bus.GNumber}\n")
     d.fbus.close()
 
-def PrintBus(file,mod):
-    lines = FileToList(file,mod)
-    for line in lines:
-        print(line)
-        # for l in line:
-        #     print(f"{l}")
+def AddDriver():
+    id = input("Введите id: ")
+    name = input("Введите водителя: ")
+    driver = m.Driver(id,name)
+    d.fDriver.write(f"{driver.Id},{driver.Name}\n")
+    d.fDriver.close()
 
+def AddRoute():
+    id = input("Введите id: ")
+    number = input("Введите номер маршрута: ")
+    bus_id = input("Введите id автобуса: ")
+    driver_id = input("Введите id водителя: ")
+    d.fRoute.write(f"{id},{bus_id},{driver_id}\n")
+    d.fRoute.close()
+
+def PrintBus():
+    file = d.fileBus
+    lines = FileToList(file)
+    for line in lines:
+        strLine = ""
+        for l in line:
+            strLine = strLine + l + " "
+        print(strLine.strip())
+
+def PrintDriver():
+    file = d.fileDriver
+    lines = FileToList(file)
+    for line in lines:
+        strLine = ""
+        for l in line:
+            strLine = strLine + l + " "
+        print(strLine.strip())
 
 # вывод в список
-def FileToList(file,mod):
-    file = m.File(d.fileBus,mod)
+def FileToList(file):
+    mod = 'r'
+    file = m.File(file,mod)
     file.Open()
     lists = []
     while True:

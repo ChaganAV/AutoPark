@@ -6,19 +6,17 @@ def InputClient():
     while True:
         res = int(input("Введите номер действия: \n> "))
         if res == 1: 
-            break
-            # c.DictPrint(fin)
+            c.PrintBus()
         elif res == 2:
-            name = input("Введите фамилию: ")
-            break
+            c.AddBus()
         elif res == 3:
-            break
+            c.PrintDriver()
         elif res == 4:
-            break
+            c.AddDriver()
         elif res == 5:
             break
         elif res == 6:   
-            break
+            c.AddRoute()
         elif res == 7:
             break
         else:
