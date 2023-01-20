@@ -1,2 +1,2 @@
 fileBus = "bus.txt"
-fbus = open(fileBus,'a',encoding='utf-8')
+fbus = open(fileBus,'a',encoding='utf8')

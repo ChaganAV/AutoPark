@@ -1,4 +1,4 @@
 import controller as c
-
-# c.InsertBus()
-c.PrintBus()
+import data as d
+# с.InsertBus()
+c.PrintBus(d.fileBus,'r')

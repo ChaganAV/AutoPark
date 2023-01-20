@@ -4,27 +4,29 @@ import model as m
 def InsertBus():
     busId = input("Введите id: ")
     busIn = input("Введите модель: ")
-    bus = m.Bus(busId,busIn)
-    d.fbus.write(f"{bus.ID},{bus.Model}")
+    busGN = input("Введите госномер: ")
+    bus = m.Bus(busId,busIn,busGN)
+    d.fbus.write(f"{bus.ID},{bus.Model},{bus.GNumber}")
     d.fbus.close()
 
-def PrintBus():
+def PrintBus(file,mod):
+    lines = FileToList(file,mod)
+    for line in lines:
+        print(line)
+        # for l in line:
+        #     print(f"{l}")
 
-    buses = list(d.fbus.readlines())
-    d.fbus.close()
-    for bus in buses:
-        print(f"{bus[0]},{bus[1]}")
 
 # вывод в список
-def FileToList(file):
-    file = d.File(file,'r')
+def FileToList(file,mod):
+    file = m.File(d.fileBus,mod)
     file.Open()
-    listFio = []
+    lists = []
     while True:
         line = file.ReadLine()
         if not line:
             break
         else:
-            listFio.append(line.split(','))
+            lists.append(line.split(','))
     file.Close()
-    return listFio
+    return lists
