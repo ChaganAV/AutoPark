@@ -1,3 +1,6 @@
 import view as v
 
-v.InputClient()
+try:
+    v.InputClient()
+except:
+    print("Ошибка в main файле!")
